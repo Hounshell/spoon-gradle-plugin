@@ -114,7 +114,7 @@ class SpoonAndroidPluginTest {
             mavenCentral()
         }
         project.dependencies {
-            compile group: 'junit', name: 'junit', version: '4.11'
+            implementation group: 'junit', name: 'junit', version: '4.11'
         }
         project.evaluate()
 
@@ -137,8 +137,8 @@ class SpoonAndroidPluginTest {
         project.apply plugin: androidPlugin
         project.apply plugin: 'spoon-android'
         project.android {
-            compileSdkVersion 25
-            buildToolsVersion "25.0.2"
+            namespace "fr.inria.gforge.spoon.unit_test"
+            compileSdk 34
         }
         project
     }

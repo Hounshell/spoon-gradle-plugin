@@ -140,7 +140,7 @@ class SpoonPluginTest {
             mavenCentral()
         }
         project.dependencies {
-            compile group: 'junit', name: 'junit', version: '4.11'
+            implementation group: 'junit', name: 'junit', version: '4.11'
         }
         project.evaluate()
 
