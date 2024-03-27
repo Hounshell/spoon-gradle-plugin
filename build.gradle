@@ -1,23 +1,24 @@
 apply plugin: 'groovy'
-apply plugin: 'maven'
+// apply plugin: 'maven'
 
 repositories {
     mavenCentral()
-    maven{
-        url 'http://spoon.gforge.inria.fr/repositories/releases'
-    }
+    google()
 }
 configurations {
     releaseJars
 }
 
 dependencies {
+    implementation libs.groovy.all
 
-    compile gradleApi()
-    compile localGroovy()
-    compile('fr.inria.gforge.spoon:spoon-core:7.0.0')
-    testCompile 'junit:junit:4.11'
-    compile('com.android.tools.build:gradle:2.3.0')
+    runtimeOnly gradleApi()
+    runtimeOnly localGroovy()
+    runtimeOnly 'com.android.tools.build:gradle:8.3.0'
+
+    implementation 'fr.inria.gforge.spoon:spoon-core:7.0.0'
+
+    testImplementation 'junit:junit:4.11'
 }
 
 jar{
@@ -36,7 +37,8 @@ test {
     }
 }
 
-apply from: 'nexusConfig.gradle'
+// Commenting out deployment for a bit until things get smoother.
+// apply from: 'nexusConfig.gradle'
 
 ext.siteUrl = "https://github.com/SpoonLabs/spoon-gradle-plugin"
 
@@ -73,7 +75,8 @@ ext.devs = [
         }
 ]
 
-
+// Commenting out javadoc and sources jars for a bit until things get smoother.
+/*
 task javadocJar(type: Jar, dependsOn: groovydoc) {
     classifier = 'javadoc'
     from groovydoc.destinationDir
@@ -87,7 +90,10 @@ task sourcesJar(type: Jar) {
 artifacts {
     archives javadocJar, sourcesJar
 }
+*/
 
+// Commenting out deployment for a bit until things get smoother.
+/*
 uploadArchives {
     repositories.mavenDeployer {
         pom.project {
@@ -119,7 +125,7 @@ uploadArchives {
         }
     }
 }
-
+*/
 
 group = 'fr.inria.gforge.spoon'
 version ='1.5-SNAPSHOT'
