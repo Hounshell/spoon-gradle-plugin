@@ -3,17 +3,32 @@ package fr.inria.gforge.spoon
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.Classpath
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import spoon.Launcher
 
 class SpoonTask extends DefaultTask {
+    @InputDirectory
     def String[] srcFolders = []
+
+    @OutputDirectory
     def File outFolder
+
+    @Input
     def boolean preserveFormatting
+
+    @Input
     def boolean noClasspath
+
+    @Input
     def String[] processors = []
+
     @Classpath
     def FileCollection classpath
+
+    @Input
     def int compliance
 
     @TaskAction

@@ -3,6 +3,10 @@ package fr.inria.gforge.spoon
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.Classpath
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import spoon.Launcher
 import spoon.OutputType
@@ -10,15 +14,31 @@ import spoon.compiler.Environment
 import spoon.processing.Processor
 
 class SpoonAndroidTask extends DefaultTask {
+    @InputDirectory
     FileCollection srcFolders
+
+    @InputFiles
     FileCollection srcPath
+
+    @OutputDirectory
     File outFolder
+
+    @Input
     boolean preserveFormatting
+
+    @Input
     boolean noClasspath
+
+    @Input
     String[] processors = []
+
+    @Input
     Processor[] processorsInstance = []
+
     @Classpath
     FileCollection classpath
+
+    @Input
     int compliance
 
     void init() {
