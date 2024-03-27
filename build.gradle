@@ -1,27 +1,23 @@
 plugins {
-    // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     id 'java-gradle-plugin'
-
-    // Apply the Groovy plugin to add support for Groovy
     id 'groovy'
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
 configurations {
     releaseJars
 }
 
 dependencies {
-    // runtimeOnly gradleApi()
-    // runtimeOnly localGroovy()
     implementation 'com.android.tools.build:gradle:8.3.0'
-
-    implementation 'fr.inria.gforge.spoon:spoon-core:7.0.0'
+    implementation 'fr.inria.gforge.spoon:spoon-core:10.4.2'
 
     testImplementation 'junit:junit:4.11'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 jar{
