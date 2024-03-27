@@ -1,5 +1,10 @@
-apply plugin: 'groovy'
-// apply plugin: 'maven'
+plugins {
+    // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
+    id 'java-gradle-plugin'
+
+    // Apply the Groovy plugin to add support for Groovy
+    id 'groovy'
+}
 
 repositories {
     mavenCentral()
@@ -10,11 +15,9 @@ configurations {
 }
 
 dependencies {
-    implementation libs.groovy.all
-
-    runtimeOnly gradleApi()
-    runtimeOnly localGroovy()
-    runtimeOnly 'com.android.tools.build:gradle:8.3.0'
+    // runtimeOnly gradleApi()
+    // runtimeOnly localGroovy()
+    implementation 'com.android.tools.build:gradle:8.3.0'
 
     implementation 'fr.inria.gforge.spoon:spoon-core:7.0.0'
 
